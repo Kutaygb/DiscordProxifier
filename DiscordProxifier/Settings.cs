@@ -80,11 +80,11 @@ namespace DiscordUnblocker
                 configuration.MainProxyPort != null
                 && configuration.MainProxyPort.ToString().Length > 0
                     ? configuration.MainProxyPort.ToString()
-                    : "92813";
+                    : "42213";
             GostPort_box.Text =
                 configuration.GostPort != null && configuration.GostPort.ToString().Length > 0
                     ? configuration.GostPort.ToString()
-                    : "92813";
+                    : "42212";
         }
 
         private void Save_Btn_Click(object sender, EventArgs e)

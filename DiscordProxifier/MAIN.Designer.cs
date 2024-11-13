@@ -93,7 +93,7 @@
             this.proxified_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.proxified_label.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.proxified_label.ForeColor = System.Drawing.Color.White;
-            this.proxified_label.Location = new System.Drawing.Point(3, 47);
+            this.proxified_label.Location = new System.Drawing.Point(3, 41);
             this.proxified_label.Name = "proxified_label";
             this.proxified_label.ReadOnly = true;
             this.proxified_label.Size = new System.Drawing.Size(137, 13);
@@ -105,7 +105,7 @@
             this.name_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.name_label.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.name_label.ForeColor = System.Drawing.Color.White;
-            this.name_label.Location = new System.Drawing.Point(3, 14);
+            this.name_label.Location = new System.Drawing.Point(3, 3);
             this.name_label.Multiline = true;
             this.name_label.Name = "name_label";
             this.name_label.ReadOnly = true;
@@ -375,6 +375,7 @@
             this.Controls.Add(this.settings_btn);
             this.Controls.Add(this.Versionlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MAIN";
             this.Text = "Discord Proxifier";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

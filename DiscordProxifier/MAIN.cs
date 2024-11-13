@@ -110,6 +110,42 @@ namespace DiscordUnblocker
         {
             this.DoubleBuffered = true;
             logger.Log("Initializing Form1");
+            int a = 0;
+            foreach (Process p in Process.GetProcesses())
+            {
+                if (
+                    p.ProcessName.ToLower() == "discordproxifier"
+                    && p.Id != Process.GetCurrentProcess().Id
+                )
+                {
+                    a += 1;
+                }
+            }
+            if (a != 0)
+            {
+                DialogResult res = MessageBox.Show(
+                    "An Process Already Running! Did you want to close?",
+                    "Discord Proxifier",
+                    MessageBoxButtons.YesNo
+                );
+                if (res == DialogResult.Yes)
+                {
+                    foreach (Process p in Process.GetProcesses())
+                    {
+                        if (
+                            p.ProcessName.ToLower() == "discordproxifier"
+                            && p.Id != Process.GetCurrentProcess().Id
+                        )
+                        {
+                            p.Kill();
+                        }
+                    }
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
             InitializeComponent();
         }
 
@@ -795,11 +831,11 @@ namespace DiscordUnblocker
                 configuration.MainProxyPort != null
                 && configuration.MainProxyPort.ToString().Length > 0
                     ? configuration.MainProxyPort.ToString()
-                    : "92813";
+                    : "42213";
             configuration.GostPort =
                 configuration.GostPort != null && configuration.GostPort.ToString().Length > 0
                     ? configuration.GostPort.ToString()
-                    : "92813";
+                    : "42212";
             OpenAtStartup = configuration.OpenAtStartup;
             SetAutoStart(OpenAtStartup);
             AutoUpdateProxified = configuration.AutoUpdateProxified;
@@ -948,11 +984,15 @@ namespace DiscordUnblocker
                 string s = new WebClient().DownloadString(
                     "https://raw.githubusercontent.com/s0rp/DiscordProxifier/refs/heads/main/ver.verme"
                 );
-                Versionlbl.Text = $"Version : {currentver.Trim()} (Newest : {s.Trim()})";
+                Versionlbl.Text = $"Version : {currentver.Trim()}";
                 this.Text = $"Discord Proxifier (V:{currentver.Trim()})";
                 if (s != null && s.Trim() == currentver.Trim())
                 {
                     result = true;
+                }
+                else
+                {
+                    Versionlbl.Text = $"Version : {currentver.Trim()} (Newest : {s.Trim()})";
                 }
             }
             catch (Exception ex)
